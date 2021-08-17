@@ -1,0 +1,41 @@
+:root {
+  --color-primary-red: hsl(7, 99%, 70%);
+  --color-primary-red-transparent: hsla(7, 99%, 70%, 0.308);
+  --color-primary-yellow: hsl(51, 100%, 49%);
+  --color-primary-yellow-transparent: hsla(51, 100%, 49%, 0.329);
+  --color-dark-cyan: hsl(167, 40%, 24%);
+  --color-dark-blue: hsl(198, 62%, 26%);
+  --color-mod-cyan: hsl(168, 34%, 41%);
+  --color-text-cyan: #2c7566;
+  --color-cyan: #90d4c5;
+
+  --color-darkest-blue: hsl(212, 27%, 19%);
+  --color-darkest-grey-blue: hsl(213, 9%, 39%);
+  --color-dark-grey-blue: hsl(232, 10%, 55%);
+  --color-grey-blue: hsl(210, 4%, 67%);
+  --color-white: hsl(0, 0%, 100%);
+
+  --color-pale: #eee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  line-height: 1.6;
+}
