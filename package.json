@@ -1,0 +1,25 @@
+{
+  "name": "sunnyside-agency",
+  "version": "1.0.0",
+  "description": "![Design preview for the Sunnyside agency landing page coding challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bibmode/Sunnyside-Agency-Landing-Page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bibmode/Sunnyside-Agency-Landing-Page/issues"
+  },
+  "homepage": "https://github.com/bibmode/Sunnyside-Agency-Landing-Page#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "sass": "^1.38.0"
+  }
+}
