@@ -13,7 +13,8 @@
   --color-darkest-grey-blue: hsl(213, 9%, 39%);
   --color-dark-grey-blue: hsl(232, 10%, 55%);
   --color-grey-blue: hsl(210, 4%, 67%);
-  --color-white: hsl(0, 0%, 100%);
+  --color-white: rgb(255, 255, 255);
+  --color-white-transparent: rgba(255, 255, 255, 0.322);
 
   --color-pale: #eee;
 }
@@ -32,10 +33,16 @@
 html {
   box-sizing: border-box;
   font-size: 18px;
+  overflow: auto;
 }
 
 body {
+  overflow: hidden;
   font-family: "Barlow", sans-serif;
   font-weight: 600;
   line-height: 1.6;
+}
+
+input[type="checkbox"] {
+  display: none;
 }

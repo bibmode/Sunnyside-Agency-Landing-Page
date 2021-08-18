@@ -2,7 +2,9 @@
   height: 100vh;
   background-image: url(../images/desktop/image-header.jpg);
   background-size: cover;
+  background-position: center;
   color: var(--color-white);
+  z-index: -1;
 
   &__main {
     display: flex;
@@ -14,19 +16,39 @@
 }
 
 .content {
-  width: 100%;
-  min-height: 100vh;
+  //width: 100%;
   background-color: var(--color-pale);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  // @media only screen and (max-width: 38em) {
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  // }
 }
 
 .testimonials {
   height: 90vh;
+  position: relative;
 
   &__container {
+    position: absolute;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
+  }
+
+  @media only screen and (max-width: 38em) {
+    height: 150vh;
+  }
+
+  @media only screen and (max-width: 30em) {
+    height: 165vh;
   }
 }
 

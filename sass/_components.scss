@@ -2,6 +2,8 @@
 ///HEADER
 
 .header {
+  display: flex;
+  flex-direction: column;
   &__phrase {
     font-family: "Fraunces", serif;
     text-transform: uppercase;
@@ -9,11 +11,52 @@
     font-size: 2.5rem;
     letter-spacing: 0.8rem;
     margin-right: -5px;
+
+    @media only screen and (max-width: 54.56em) {
+      font-size: 2rem;
+    }
+
+    @media only screen and (max-width: 43.81em) {
+      font-size: 1.5rem;
+    }
+
+    @media only screen and (max-width: 38em) {
+      padding: 0 1rem;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    @media only screen and (max-width: 30em) {
+      font-size: 2.5rem;
+      letter-spacing: 0.25rem;
+    }
+
+    @media only screen and (max-width: 25.31em) {
+      margin-top: 2rem;
+    }
+
+    @media only screen and (max-width: 21.56em) {
+      font-size: 2rem;
+    }
   }
 
   &__arrow {
-    font-size: 9rem;
-    padding-top: 10px;
+    padding-top: 5rem;
+    animation: pointDown 1.5s infinite;
+  }
+}
+
+@keyframes pointDown {
+  0% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: 2rem;
+  }
+
+  100% {
+    margin-top: 0;
   }
 }
 
@@ -25,23 +68,36 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem 2.5rem;
+  position: relative;
+  height: 100px;
+  position: relative;
+
+  @media only screen and (max-width: 25.31em) {
+    padding: 2rem 1.5rem;
+  }
 
   &__title {
-    font-weight: 800;
-    font-size: 2rem;
+    width: 9rem;
   }
 
   &__right {
     display: flex;
+    align-items: center;
+    transition: all 0.5s ease;
   }
 
   &__links {
     display: flex;
+    @media only screen and (max-width: 54.56em) {
+      display: none;
+    }
   }
 
   &__item {
     list-style: none;
     padding: 1.5rem;
+    color: currentColor;
+    text-decoration: none;
   }
 
   &__btn {
@@ -51,12 +107,128 @@
     color: var(--color-darkest-blue);
     text-transform: uppercase;
     align-self: center;
-    padding: 1rem 1.5rem;
+    padding: 0.9rem 1.5rem;
+    cursor: pointer;
 
     background-color: var(--color-white);
     border: none;
     border-radius: 100px;
     margin-left: 1.5rem;
+
+    &:hover {
+      color: var(--color-white);
+      background-color: var(--color-white-transparent);
+    }
+
+    @media only screen and (max-width: 54.56em) {
+      display: none;
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    transform: scale(1.2);
+    cursor: pointer;
+    @media only screen and (max-width: 54.56em) {
+      display: block;
+      z-index: 100;
+    }
+  }
+}
+
+/////////////////
+///DROP DOWN
+
+input[type="checkbox"] {
+  @media only screen and (max-width: 54.56em) {
+    &:checked ~ .drop-down {
+      opacity: 1;
+      visibility: visible;
+      top: 7rem;
+      left: 0;
+      height: 50vh;
+      width: calc(100% - 5rem);
+      transform: scale(1);
+      transform-origin: 100% 0;
+      padding: 10% 30%;
+      z-index: 1000;
+      transition: transform 0.5s ease, height 0.5s, opacity 0.5s;
+    }
+  }
+
+  @media only screen and (max-width: 25.31em) {
+    &:checked ~ .drop-down {
+      width: calc(100% - 3rem);
+    }
+  }
+}
+
+.drop-down {
+  opacity: 0;
+  visibility: hidden;
+
+  @media only screen and (max-width: 54.56em) {
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+
+    position: absolute;
+    height: 50vh;
+    width: calc(100% - 5rem);
+    transform: scale(0);
+    transform-origin: 100% 0;
+    margin: 0 2.5rem;
+    background-color: #eee;
+    transition: transform 0.5s ease;
+  }
+
+  @media only screen and (max-width: 25.31em) {
+    margin: 0 1.5rem;
+    width: calc(100% - 3rem);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2.4rem;
+    right: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #eee;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+
+    @media only screen and (max-width: 54.56em) {
+      display: block;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__item {
+    text-decoration: none;
+    color: var(--color-dark-grey-blue);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__btn {
+    font-family: "Fraunces", serif;
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--color-darkest-blue);
+    text-transform: uppercase;
+    align-self: center;
+    padding: 0.9rem 1.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+
+    background-color: var(--color-primary-yellow);
+    border: none;
+    border-radius: 100px;
   }
 }
 
@@ -64,53 +236,99 @@
 ///GRID
 
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-
   &__box {
     flex: 0 0 50%;
     height: 600px;
 
     display: flex;
     flex-direction: column;
+    background-size: cover;
+    background-position: center;
+
     &--1 {
       order: 1;
+      @media only screen and (max-width: 43.81em) {
+        max-width: 50%;
+      }
+
+      @media only screen and (max-width: 38em) {
+        order: 2;
+        max-width: none;
+      }
     }
 
     &--2 {
       order: 4;
+      @media only screen and (max-width: 38em) {
+      }
     }
 
     &--3 {
       order: 2;
       background-image: url(../images/desktop/image-transform.jpg);
+      @media only screen and (max-width: 38em) {
+        flex: 0 0 100%;
+        order: 1;
+      }
     }
 
     &--4 {
-      order: 3;
+      order: 2;
       background-image: url(../images/desktop/image-stand-out.jpg);
+
+      @media only screen and (max-width: 38em) {
+        flex: 0 0 100%;
+      }
     }
 
     &--5 {
-      order: 5;
       background-image: url(../images/desktop/image-graphic-design.jpg);
+      order: 5;
     }
 
     &--6 {
-      order: 6;
       background-image: url(../images/desktop/image-photography.jpg);
+      order: 6;
     }
   }
 
   &__text-only {
     justify-content: center;
     padding: 0 7.5rem;
+    @media only screen and (max-width: 62.5em) {
+      padding: 0 4rem;
+    }
+
+    @media only screen and (max-width: 38em) {
+      flex: 0 0 100%;
+    }
+
+    @media only screen and (max-width: 25.31em) {
+      padding: 0 2rem;
+    }
+  }
+
+  &__image-only {
+    @media only screen and (max-width: 38em) {
+      height: 25rem;
+    }
   }
 
   &__text-image {
     text-align: center;
     padding: 0 7rem;
     color: var(--color-darkest-grey-blue);
+    @media only screen and (max-width: 62.5em) {
+      padding: 0 3rem;
+    }
+
+    @media only screen and (max-width: 54.56em) {
+      padding: 0 1.5rem;
+    }
+
+    @media only screen and (max-width: 38em) {
+      flex: 0 0 100%;
+    }
   }
 
   &__link {
@@ -122,6 +340,7 @@
     color: var(--color-darkest-blue);
     width: fit-content;
     padding: 0 0.4rem;
+    transition: height 5s ease, transform 0.5s ease;
 
     &--1 {
       position: relative;
@@ -154,6 +373,14 @@
         z-index: -1;
       }
     }
+
+    &:hover {
+      &::before {
+        min-height: 1.5rem;
+      }
+      backdrop-filter: none;
+      transform: scale(1.1);
+    }
   }
 
   &__heading {
@@ -182,6 +409,9 @@
     &--2 {
       padding: 0 2.7rem;
       margin-bottom: 3rem;
+      @media only screen and (max-width: 54.56em) {
+        padding: 0;
+      }
     }
   }
 }
@@ -209,12 +439,42 @@
   text-align: center;
 
   &:not(:last-child) {
-    margin-right: 2rem;
+    width: 25%;
   }
 
   &__container {
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    @media only screen and (max-width: 62.5em) {
+      justify-content: space-around;
+    }
+
+    @media only screen and (max-width: 38em) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 38em) {
+    &:not(:last-child) {
+      width: 60%;
+    }
+
+    &:last-child {
+      width: 60%;
+    }
+  }
+
+  @media only screen and (max-width: 30em) {
+    &:not(:last-child) {
+      width: 85%;
+    }
+
+    &:last-child {
+      width: 85%;
+    }
   }
 
   &__image {
@@ -223,6 +483,11 @@
     border-radius: 100px;
 
     margin: 3rem 0;
+
+    @media only screen and (max-width: 38em) {
+      margin: 1.5rem 0;
+      margin-top: 3rem;
+    }
   }
 
   &__comment {
@@ -236,6 +501,10 @@
     font-size: 1rem;
 
     margin-top: 3rem;
+
+    @media only screen and (max-width: 38em) {
+      margin-top: 1.5rem;
+    }
   }
 
   &__position {
@@ -263,20 +532,21 @@
 
 .footer {
   &__heading {
-    color: var(--color-text-cyan);
-    font-size: 2rem;
+    fill: var(--color-text-cyan);
+    transform: scale(1.3);
   }
 
   &__links {
     display: flex;
     list-style: none;
     color: var(--color-mod-cyan);
-    padding: 1rem 0;
-    margin-bottom: 3rem;
+    padding: 2rem 0;
+    margin-bottom: 1.9rem;
   }
 
   &__link {
     font-size: 1rem;
+    cursor: pointer;
     &:not(:last-child) {
       margin-right: 3rem;
     }
